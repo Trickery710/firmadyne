@@ -10,4 +10,6 @@ scratch/
 binaries/
 extractor/
 database/
-analyses
+analyses/
+sources/
+
