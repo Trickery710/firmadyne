@@ -1,5 +1,5 @@
 # docker build -t firmadyne .
-FROM ubuntu:14.04
+FROM ubuntu:rolling
 
 # Update packages
 RUN apt-get update && apt-get upgrade -y && apt-get install -y sudo
