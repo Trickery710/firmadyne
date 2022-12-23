@@ -21,8 +21,8 @@ sudo python3 ./setup.py install
 popd
 
 # Install additional deps
-sudo pip3 install git+https://github.com/ahupp/python-magic
-sudo pip install git+https://github.com/sviehb/jefferson
+sudo pip3 install git+https://github.com/Trickery710/python-magic
+sudo pip install git+https://github.com/Trickery710/jefferson
 
 # Set up database
 sudo service postgresql start

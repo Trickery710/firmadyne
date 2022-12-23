@@ -1,0 +1,4 @@
+POSTGRES_PASSWORD=super user password
+POSTGRES_USER=super user name
+POSTGRES_DB.POSTGRES_USER=super user name
+POSTGRES_DB=default database, defaults to [POSTGRES_USER]

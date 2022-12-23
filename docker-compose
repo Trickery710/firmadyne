@@ -1,0 +1,76 @@
+# docker-compose.yml
+version: '2'
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    user: postgres
+    secrets:
+      - db-password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=example
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+    expose:
+      - 5432
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+# join a pre-existing network
+	networks:
+  	default:
+    	external:
+      	name: db
+      
+
+
+
+
+  web:
+    build: .
+    # build from Dockerfile
+    context: ./
+    dockerfile: Dockerfile
+ 
+  # make sure `db` is healty before starting
+  # and db-init completed without failure
+  depends_on:
+    db:
+      condition: service_healthy
+    db-init:
+      condition: service_completed_successfully
+
+ 
+ 
+
+# join a pre-existing network
+networks:
+  default:
+    external:
+      name: frontend
+      
+# makes the `db` service available as the hostname `database`
+  # (implies depends_on)
+  links:
+    - db:database
+    - redis
+
+  # make sure `db` is alive before starting
+  depends_on:
+    - db
+secrets:
+  db-password:
+    file: db/password.txt
+
+
+service
+  db:
+    image: postgres:latest
+    volumes:
+      - "/var/run/postgres/postgres.sock:/var/run/postgres/postgres.sock"
+      - "dbdata:/var/lib/postgresql/data"
+volumes:
+  dbdata:
