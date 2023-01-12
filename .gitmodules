@@ -1,6 +1,6 @@
-[submodule "sources/extractor"]
-	path = sources/extractor
-	url = https://github.com/firmadyne/extractor.git
+#[submodule "sources/extractor"]
+#	path = sources/extractor
+#	url = https://github.com/firmadyne/extractor.git
 [submodule "sources/console"]
 	path = sources/console
 	url = https://github.com/firmadyne/console.git
