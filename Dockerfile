@@ -1,5 +1,5 @@
 # docker build -t firmadyne:local .
-FROM ubuntu:20.04
+FROM ubuntu:rolling
 # Set shell to bash instead of dash
 RUN export DEBIAN_FRONTEND=noninteractive
 RUN echo "dash dash/sh boolean false" | debconf-set-selections && dpkg-reconfigure dash
