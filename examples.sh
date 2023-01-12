@@ -12,7 +12,7 @@ set -x
 wget -N --continue http://www.downloads.netgear.com/files/GDC/WNAP320/WNAP320%20Firmware%20Version%202.0.3.zip
 ZIP_FILE="WNAP320 Firmware Version 2.0.3.zip"
 
-./sources/extractor/extractor -b Netgear -np -nk "$ZIP_FILE" images
+./sources/extractor/extractor.py -b Netgear -np -nk "$ZIP_FILE" images
 
 ./scripts/getArch.sh ./images/1.tar.gz
 ./scripts/tar2db.py -i 1 -f ./images/1.tar.gz
